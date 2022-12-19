@@ -12,20 +12,21 @@ import java.util.HashMap;
 
 
 @Controller
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
     @Autowired(required = false)
     private UserService userService;
-
+    UserDTO userDTO = new UserDTO();
 
     @GetMapping("/signIn")
     @ResponseBody
-    public String signIn() throws Exception {
+    public UserDTO signIn() throws Exception {
         //사실 이거 바디로 받아서 포스트 매핑으로 해야하나 일단 테스트중
         String checkMessage = userService.validationCheck();
-        System.out.println(checkMessage);
-        return checkMessage;
+        userDTO.setIdentification(checkMessage);
+        userDTO.setPassword("asdadsadd");
+        return userDTO;
     }
 
 }
