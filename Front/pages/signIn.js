@@ -1,11 +1,11 @@
 import { Card, Icon, Image } from 'semantic-ui-react'
 import SignIn from '../src/component/SignIn';
-function signIn(){
+function signIn(data){
 
   return (
     
     <>
-    <SignIn></SignIn>
+    <SignIn props={data}></SignIn>
     </>
     
   )
@@ -13,4 +13,12 @@ function signIn(){
 
 
 export default signIn;
-
+export async function getServerSideProps(context) {
+  const res = await fetch('http://localhost:8080/signIn')
+  const data = await res.json()
+  return {
+    props: {
+      item: data
+    }, 
+  }
+}

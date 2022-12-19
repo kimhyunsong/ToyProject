@@ -1,5 +1,10 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Button, Checkbox, Form } from 'semantic-ui-react'
+
+
+
+
 
 
 
@@ -13,25 +18,10 @@ function idChange(e){
   console.log(e.target.value)
 }
 
-export default function SignIn(){
-  const [id, setId] = useState();
-  const [temp, setTemp] = useState();
-  useEffect(()=>{
-    const fetchData = async()=>{
-      await fetch('http://localhost:8080/signIn')
-      .then((res)=>{
-        console.log(res)
-      })
-    }
-
-    fetchData();
-
-  },[])
-  
+export default function SignIn(data){
   return(
-    
     <>
-    
+    {console.log(data.props)}
       <h1> 로그인 페이지 </h1>
       <Form onSubmit={checkSignIn}>
         <Form.Field>

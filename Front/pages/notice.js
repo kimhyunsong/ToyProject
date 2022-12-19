@@ -51,8 +51,9 @@ export default notice;
 
 
 export async function getServerSideProps(context) {
-  const res = await fetch('https://jsonplaceholder.typicode.com/photos')
+  const res = await fetch('http://localhost:8080/signIn')
   const data = await res.json() 
+  console.log(data)
   return {
     props: {
       item: data
