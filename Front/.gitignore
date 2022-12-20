@@ -2,6 +2,8 @@
 
 # ../
 !/front/
+
+~/back
 # dependencies
 /node_modules
 /.pnp
