@@ -9,19 +9,35 @@ import { Button, Checkbox, Form } from 'semantic-ui-react'
 
 
 
-function checkSignIn(e){
-  e.preventDefault();
-  console.log(e.target);
-}
-function idChange(e){
-  e.preventDefault();
-  console.log(e.target.value)
-}
+
 
 export default function SignIn(data){
+  const [id, setId] = useState('');
+  const [pw, setPw] = useState('');
+
+
+  async function checkSignIn(e){
+    e.preventDefault();
+    await axios.post('http://localhost:8080/signIn', {
+      identification: id,
+      password: pw
+    })
+    .then((res)=>{
+      console.log(res)
+    })
+  }
+  function idChange(e){
+    e.preventDefault();
+    setId(e.target.value)
+  }
+  function pwChange(e){
+    e.preventDefault();
+    setPw(e.target.value)
+  }
+
+
   return(
     <>
-    {console.log(data.props)}
       <h1> 로그인 페이지 </h1>
       <Form onSubmit={checkSignIn}>
         <Form.Field>
@@ -31,7 +47,7 @@ export default function SignIn(data){
         <Form.Field>
           <label>비밀번호</label>
           
-          <input placeholder='비밀번호' type="password"/>
+          <input placeholder='비밀번호' onKeyUp={pwChange} type="password"/>
         </Form.Field>
         <Button type='submit'>Submit</Button>
       </Form>

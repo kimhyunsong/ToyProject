@@ -5,7 +5,7 @@ package com.main.back;
 
 
 public interface UserService {
-    String validationCheck() throws Exception;
+    String validationCheck(UserDTO userDTO) throws Exception;
 
    String getPassword() throws Exception;
 

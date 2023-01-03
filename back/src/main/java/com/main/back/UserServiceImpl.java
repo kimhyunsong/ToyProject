@@ -1,13 +1,19 @@
 package com.main.back;
 
 
+import com.main.back.dao.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService{
     @Override
-    public String validationCheck(){
-        return "아직 아무고토 못하죠?";
+    public String validationCheck(UserDTO user){
+        String res = UserMapper.signIn(user);
+        if (user.getIdentification().equals("ssong")){
+            return "OK";
+        } else {
+            return "Fail";
+        }
     }
 
     @Override

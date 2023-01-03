@@ -4,45 +4,8 @@ function notice({item}){
   return (
     
     <>
-    <SignIn></SignIn>
     </>
-    // <Card.Group>
-    //   <style>
-    //     {
-    //       `
-    //       #__next {
-    //         background-color: #252839;
-    //         align-content: center;
-    //         display: flex;
-    //         flex-direction: column;
-    //         justify-content: center;
-    //         min-height: 6em;
-    //       }
-    //       `
-    //     }
-
-    //   </style>
-    // {item.map((data)=>{
-
-    //   return(
-    //      <Card key={data.id}>
-    //        <Image src={data.thumbnailUrl} wrapped ui={false} />
-    //        <Card.Content>
-    //         <Card.Header>{data.title}</Card.Header>
-    //         <Card.Meta>
-    //           <span className='date'>Joined in 2015</span>
-    //         </Card.Meta>
-    //         <Card.Description>
-    //           Matthew is a musician living in Nashville.
-    //         </Card.Description>
-    //       </Card.Content>
-    //      </Card>
-    //   )
-
-
-    // })}
-    // </Card.Group>
-    
+   
   )
 }
 
@@ -50,13 +13,3 @@ function notice({item}){
 export default notice;
 
 
-export async function getServerSideProps(context) {
-  const res = await fetch('http://localhost:8080/signIn')
-  const data = await res.json() 
-  console.log(data)
-  return {
-    props: {
-      item: data
-    }, 
-  }
-}

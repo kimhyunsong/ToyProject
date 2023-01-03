@@ -3,10 +3,7 @@ package com.main.back;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
@@ -19,14 +16,16 @@ public class UserController {
     private UserService userService;
     UserDTO userDTO = new UserDTO();
 
-    @GetMapping("/signIn")
+    @PostMapping("/signIn")
     @ResponseBody
-    public UserDTO signIn() throws Exception {
-        //사실 이거 바디로 받아서 포스트 매핑으로 해야하나 일단 테스트중
-        String checkMessage = userService.validationCheck();
+    public String signIn(@RequestBody UserDTO user) throws Exception {
+        String checkMessage = userService.validationCheck(user);
         userDTO.setIdentification(checkMessage);
         userDTO.setPassword("asdadsadd");
-        return userDTO;
+        return checkMessage;
+
     }
+
+
 
 }
