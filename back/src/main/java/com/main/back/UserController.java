@@ -31,8 +31,8 @@ public class UserController {
     @ResponseBody
     public List<UserDTO> test() throws Exception {
 
-        List<UserDTO> test = userService.getUserList();
-        return test;
+        return userService.getUserList();
+
     }
 
 

@@ -3,6 +3,6 @@
 
 <mapper namespace="com.main.back.dao.mapper.UserMapper">
     <select id="getUserList" resultType="com.main.back.UserDTO">
-        SELECT * FROM users;
+        SELECT * FROM user_m;
     </select>
 </mapper>
