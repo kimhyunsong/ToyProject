@@ -4,8 +4,21 @@
 <!--       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">-->
 <!--</beans>-->
 
-<mapper namespace = "com.main.back.dao.mapper">
-<insert id="signIn" parameterType="user">
-    INSERT INTO user_m values(#{id}, #{pw}, "1", #{name}, #{gender}, #{email})
-</insert>
+
+
+
+<!--<mapper namespace = "com.main.back.dao.mapper">-->
+<!--<insert id="signIn" parameterType="user">-->
+<!--    INSERT INTO user_m values(#{id}, #{pw}, "1", #{name}, #{gender}, #{email})-->
+<!--</insert>-->
+<!--</mapper>-->
+
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.run.api.global.dao.UserMapper">
+    <select id="getUserList" resultType="com.run.api.global.dto.user">
+        SELECT * FROM users;
+    </select>
 </mapper>

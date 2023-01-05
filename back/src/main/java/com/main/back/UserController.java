@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 
 @Controller
@@ -20,10 +21,18 @@ public class UserController {
     @ResponseBody
     public String signIn(@RequestBody UserDTO user) throws Exception {
         String checkMessage = userService.validationCheck(user);
-        userDTO.setIdentification(checkMessage);
+        userDTO.setUser_id(checkMessage);
         userDTO.setPassword("asdadsadd");
         return checkMessage;
 
+    }
+
+    @GetMapping("/test")
+    @ResponseBody
+    public List<UserDTO> test() throws Exception {
+
+        List<UserDTO> test = userService.getUserList();
+        return test;
     }
 
 

@@ -1,15 +1,28 @@
 package com.main.back;
-
-
 import com.main.back.dao.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService{
+    private UserMapper userMapper;
+
+
+    @Autowired
+    UserServiceImpl(UserMapper userMapper){
+        this.userMapper = userMapper;
+    }
+    @Override
+    public List<UserDTO> getUserList() {
+        return userMapper.getUserList();
+    }
+
     @Override
     public String validationCheck(UserDTO user){
-        String res = UserMapper.signIn(user);
-        if (user.getIdentification().equals("ssong")){
+//        int res = UserMapper.signIn(user);
+        if (user.getUser_id().equals("ssong")){
             return "OK";
         } else {
             return "Fail";
